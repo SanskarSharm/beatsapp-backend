@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>BeatsApp - Store</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        background: #071126;
+        color: #e6eef8;
+        font-family: Inter, system-ui, Arial;
+        margin: 0;
+        padding: 18px;
+      }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 18px;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <h1>Store — Browse Beats</h1>
+
+      <section class="panel">
+        <h2>Buyer</h2>
+        <div class="form-row">
+          <label style="min-width: 100px">Select User</label
+          ><select id="buyerSelect"></select>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Beats</h2>
+        <div id="beatsGrid" class="file-list"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Purchases</h2>
+        <div id="purchasesList"></div>
+      </section>
+
+      <p><a href="manage.html">Manage</a> - <a href="index.html">Upload</a></p>
+    </main>
+
+    <script src="store.js"></script>
+  </body>
+</html>

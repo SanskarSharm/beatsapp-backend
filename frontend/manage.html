@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>BeatsApp - Manage</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* Inline fallback for critical layout in case external CSS fails */
+      body {
+        background: #071126;
+        color: #e6eef8;
+        font-family: Inter, system-ui, Arial;
+        margin: 0;
+        padding: 18px;
+      }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 18px;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 10px;
+      }
+      input,
+      textarea,
+      select,
+      button {
+        font-family: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <h1>Manage - Users / Artists / Beats</h1>
+
+      <section class="panel">
+        <h2>Create User</h2>
+        <form id="userForm" class="form-grid">
+          <input name="name" placeholder="Name" required />
+          <input name="mobile" placeholder="Mobile" />
+          <input name="email" placeholder="Email" required />
+          <input
+            name="password"
+            placeholder="Password"
+            type="password"
+            required
+          />
+          <input class="full" name="address" placeholder="Address" />
+          <div class="full">
+            <button type="submit" class="btn">Create User</button>
+          </div>
+        </form>
+        <div id="userResult" class="result"></div>
+        <div id="usersList" class="file-list" style="margin-top: 12px"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Create Artist</h2>
+        <form id="artistForm" class="form-grid">
+          <input name="artist_name" placeholder="Artist Name" required />
+          <input name="mobile" placeholder="Mobile" />
+          <input name="email" placeholder="Email" />
+          <input class="full" name="address" placeholder="Address" />
+          <div class="full">
+            <button type="submit" class="btn">Create Artist</button>
+          </div>
+        </form>
+        <div id="artistResult" class="result"></div>
+        <div id="artistsList" class="file-list" style="margin-top: 12px"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Upload Beat</h2>
+        <form id="beatForm" class="form-grid">
+          <input
+            id="beatName"
+            name="beat_name"
+            placeholder="Beat Name"
+            required
+          />
+          <input name="beat_type" placeholder="Beat Type" />
+          <input name="price" placeholder="Price" />
+          <input name="genre" placeholder="Genre" />
+          <input name="bpm" placeholder="BPM" />
+          <textarea
+            class="full"
+            name="description"
+            placeholder="Description"
+          ></textarea>
+          <select name="artist_id" id="artistSelect" class="full"></select>
+          <div class="form-row full">
+            <label style="min-width: 80px">Audio file</label
+            ><input id="audioFile" type="file" accept="audio/*" />
+          </div>
+          <div class="form-row">
+            <label style="min-width: 80px">Cover image</label
+            ><input id="coverFile" type="file" accept="image/*" />
+          </div>
+          <div class="form-row">
+            <label style="min-width: 80px">Banner image</label
+            ><input id="bannerFile" type="file" accept="image/*" />
+          </div>
+          <input name="duration" placeholder="Duration (seconds)" />
+          <input name="track_type" placeholder="Track type" />
+          <input name="mood" placeholder="Mood" />
+          <div class="full">
+            <button type="submit" class="btn">Upload Beat</button>
+          </div>
+        </form>
+        <div id="beatResult" class="result"></div>
+        <div id="beatsList" class="file-list" style="margin-top: 12px"></div>
+      </section>
+
+      <p>
+        <a href="index.html">Back to upload page</a> |
+        <a href="store.html">Store</a>
+      </p>
+    </main>
+
+    <script src="manage.js"></script>
+  </body>
+</html>

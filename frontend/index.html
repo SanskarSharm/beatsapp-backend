@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>BeatsApp - Upload</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Upload Audio</h1>
+
+      <p><a href="manage.html">Manage users / artists / beats</a></p>
+
+      <form id="uploadForm" class="upload-form">
+        <div id="dropzone" class="dropzone">
+          Drag & drop a file here or click to select
+        </div>
+        <input
+          id="fileInput"
+          name="audio"
+          type="file"
+          accept="audio/*,text/*"
+          hidden
+        />
+        <div class="controls">
+          <button id="uploadBtn" type="button" class="btn">Upload</button>
+          <div id="progressWrap" class="progress-wrap" hidden>
+            <progress id="progress" value="0" max="100"></progress>
+            <span id="progressText">0%</span>
+          </div>
+        </div>
+      </form>
+
+      <section id="result" class="result" aria-live="polite"></section>
+
+      <section id="fileList" class="file-list">
+        <!-- populated by upload.js -->
+      </section>
+    </main>
+
+    <script src="upload.js"></script>
+  </body>
+</html>

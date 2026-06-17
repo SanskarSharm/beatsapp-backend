@@ -7,7 +7,9 @@ const progressText = document.getElementById("progressText");
 const result = document.getElementById("result");
 const fileListEl = document.getElementById("fileList");
 
-const API_BASE = window.API_BASE || "http://localhost:3000/beats";
+const API_BASE = window.API_BASE
+  ? `${window.API_BASE}/beats`
+  : `${window.location.origin}/beats`;
 
 let player = new Audio();
 let currentPlayingKey = null;
@@ -57,7 +59,9 @@ uploadBtn.addEventListener("click", () => {
 function uploadFile(file) {
   const url = window.UPLOAD_URL
     ? window.UPLOAD_URL
-    : "http://localhost:3000/beats/upload-audio";
+    : window.API_BASE
+      ? `${window.API_BASE}/beats/upload-audio`
+      : `${window.location.origin}/beats/upload-audio`;
   const form = new FormData();
   form.append("audio", file);
 

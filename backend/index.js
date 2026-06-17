@@ -20,6 +20,17 @@ app.use(helmet());
 app.use(morgan(process.env.LOG_FORMAT || "combined"));
 
 // serve frontend statically so app can be deployed from one server
+// expose runtime env for frontend to consume (API_BASE, UPLOAD_URL)
+app.get("/env.js", (req, res) => {
+  const portVal = process.env.PORT || 3000;
+  const apiBase = `http://localhost:${portVal}`;
+  const uploadUrl = `${apiBase}/beats/upload-audio`;
+  res.set("Content-Type", "application/javascript");
+  res.send(
+    `window.API_BASE = "${apiBase}"; window.UPLOAD_URL = "${uploadUrl}";`,
+  );
+});
+
 app.use(express.static(path.join(__dirname, "..", "frontend")));
 
 // initialize DB/schema

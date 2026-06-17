@@ -1,4 +1,4 @@
-const API_BASE = window.API_BASE || "http://localhost:3000";
+const API_BASE = window.API_BASE || window.location.origin;
 
 async function postJSON(url, body) {
   const resp = await fetch(url, {

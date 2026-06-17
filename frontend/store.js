@@ -48,10 +48,14 @@ function renderBeats(items) {
     playBtn.className = "btn-secondary";
     playBtn.textContent = "Play";
     playBtn.addEventListener("click", () => {
-      const audio = new Audio(
-        `${API_BASE}/beats/object/${encodeURIComponent(b.audio_url)}`,
-      );
-      audio.play();
+      const src =
+        b.audio_url &&
+        (b.audio_url.startsWith("http://") ||
+          b.audio_url.startsWith("https://"))
+          ? b.audio_url
+          : `${API_BASE}/beats/object/${encodeURIComponent(b.audio_url)}`;
+      const audio = new Audio(src);
+      audio.play().catch((err) => console.error("play error", err));
     });
     const buyBtn = document.createElement("button");
     buyBtn.className = "btn";

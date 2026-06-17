@@ -140,10 +140,14 @@ async function refreshBeatsList() {
       node.innerHTML = `<div><strong>${b.beat_name}</strong> <div class="file-meta">by ${b.artist_name || "Unknown"} - ${b.genre || "-"} - ${b.bpm || "-"} BPM - ${b.selling_status || "-"}</div></div><div class="file-actions"><button class="btn-secondary">Play</button></div>`;
       const playBtn = node.querySelector("button");
       playBtn.addEventListener("click", () => {
-        const audio = new Audio(
-          `${API_BASE}/beats/object/${encodeURIComponent(b.audio_url)}`,
-        );
-        audio.play();
+        const src =
+          b.audio_url &&
+          (b.audio_url.startsWith("http://") ||
+            b.audio_url.startsWith("https://"))
+            ? b.audio_url
+            : `${API_BASE}/beats/object/${encodeURIComponent(b.audio_url)}`;
+        const audio = new Audio(src);
+        audio.play().catch((err) => console.error("play error", err));
       });
       el.appendChild(node);
     });

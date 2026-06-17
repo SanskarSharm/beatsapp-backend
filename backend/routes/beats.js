@@ -34,6 +34,8 @@ router.get("/object/:key", async (req, res) => {
   try {
     const data = await getObject(req.params.key);
     if (data && data.buffer) {
+      // allow cross-origin media usage (played from different frontend origin)
+      res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
       res.setHeader(
         "Content-Type",
         data.contentType || "application/octet-stream",
